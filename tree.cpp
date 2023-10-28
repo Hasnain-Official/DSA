@@ -102,7 +102,6 @@ void Tree::level_order(Node *root) {
 }
 
 int Tree::height(Node* root) {
-    int count = 0;
     int x = 0, y = 0;
     if(root == 0) {
         return 0;
