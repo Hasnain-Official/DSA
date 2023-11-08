@@ -1,0 +1,51 @@
+const https = require('https');
+const fs = require('fs');
+const crypto = require('crypto');
+
+https.get('https://coderbyte.com/api/challenges/json/age-counting', (resp) => {
+  resp.setEncoding('utf-8');
+  let data = '';
+
+  resp.on('data', (d) => {
+    data += [d];
+  });
+
+  resp.on('end', async () => {
+    let key = [], age = [], filtered_array = [];
+    let parsedData = JSON.parse(data.split("',"))?.data;
+    parsedData = parsedData.split(", ");
+    parsedData.map((val, index) => index % 2 == 0 ? key.push(val.split("=")[1]) : age.push(parseInt(val.split("=")[1])));
+    age.map((val, index) => {
+      if(val == 32) {
+        filtered_array.push(key[index]);
+        // filtered_array.push(`age=${val}`);
+      }
+    });
+    const writer = await fs.createWriteStream('output.txt');
+    for(let i = 0; i < filtered_array.length; i++) {
+      writer.write(`${filtered_array[i]}\n`);
+    }
+    writer.on('finish', () => {});
+    writer.end();
+    let hash_generated = '', fileData = '';
+    const fileBuffer = fs.createReadStream('output.txt');
+    fileBuffer.on('data', (d) => {
+      fileData += d.toString();
+    });
+    fileBuffer.on('end', () => {
+      const hashSum = crypto.createHash('SHA1');
+      hashSum.update(fileData);
+      hash_generated = hashSum.digest('hex');
+      hash_generated += '9n465yj7cd8';
+      hash_generated = hash_generated.split("");
+      let hash_length = hash_generated.length;
+      for(let i = 2; i < hash_length; i = i+3) {
+        hash_generated[i] = 'X';
+      }
+      console.log(hash_generated.join(""));
+    });
+  });
+  resp.on("error", (e) => {
+    console.error("Error ", e);
+  });
+});
