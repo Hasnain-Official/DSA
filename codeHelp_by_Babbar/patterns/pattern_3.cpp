@@ -8,7 +8,7 @@ int main() {
     int row = 1;
     while (row <= n) {
         int value = row;
-        int col = 1;
+        int col = 1;    
         while (col <= row) {
            cout<<value<<" ";
            value++;
@@ -18,5 +18,15 @@ int main() {
         row++;
     }
     cout<<"-------------"<<endl;
+    row = 1;
+    while(row <= n) {
+        int col = row;
+        while(col > 0) {
+            cout<<col;
+            col--;
+        }
+        cout<<endl;
+        row++;
+    }
     return 0;
 }
