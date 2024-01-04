@@ -2,6 +2,8 @@ test/node_modules
 test/.env
 test/app1.js
 test/app2.js
+test/src3
+test/config
 test/Report.csv
 test/test.js
 test/config/db.config.js
