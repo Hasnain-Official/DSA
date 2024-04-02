@@ -16,7 +16,7 @@ bool checkSortedOrRotated(vector<int> arr) {
             count++;
         }
     }
-    if(arr[arr.size() - 1] <arr[0]) {
+    if(arr[arr.size() - 1] < arr[0]) {
         count++;
     }
     return count <= 1;

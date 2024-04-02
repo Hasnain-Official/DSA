@@ -14,8 +14,8 @@ int isPossible(int arr[], int n, int m,int mid) {
             }
             pageSum = arr[i];
         }
-        return true;
     }
+    return true;
     
     return -1;
 }
