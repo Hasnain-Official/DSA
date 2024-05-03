@@ -15,7 +15,7 @@ void bfs(int G[7][7], int start, int n) {
         q.pop();
         for (j = 1; j <= n; j++) {
             if(G[i][j] == 1 && visited[j] == 0) {
-                cout<<" - > "<<j<<endl;
+                cout<<" - > "<<i<<" "<<j<<endl;
                 visited[j] = 1;
                 q.push(j);
             }
@@ -23,7 +23,7 @@ void bfs(int G[7][7], int start, int n) {
     }
 }
 
-void dfs(int G[][7], int start, int n) {
+void dfs(int G[7][7], int start, int n) {
     static int visited[7] = {0};
     if(visited[start] == 0) {
         visited[start] = 1;

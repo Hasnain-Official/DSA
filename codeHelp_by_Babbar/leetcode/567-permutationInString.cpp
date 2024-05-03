@@ -3,6 +3,8 @@
 
 using namespace std;
 
+// sliding window approach
+
 bool checkEqual(vector<int> c1, vector<int> c2) {
     for (int i = 0; i < c1.size(); i++) {
         if(c1[i] != c2[i]) {
