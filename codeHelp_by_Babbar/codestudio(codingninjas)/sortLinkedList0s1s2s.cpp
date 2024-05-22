@@ -85,7 +85,7 @@ Node* sortList0s1s2s(Node* head) {
     twoTail->next = NULL;
 
     // head rebase
-    head = oneHead->next;
+    head = zeroHead->next;
 
     // delete the -1 nodes created above
     delete oneHead;

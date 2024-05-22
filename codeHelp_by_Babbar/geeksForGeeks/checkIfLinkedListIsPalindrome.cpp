@@ -13,6 +13,7 @@ class Node {
         }
 };
 
+// used vector that's why space complexity is O(n)
 bool isListPalindrome(Node* &head) {
     if(head == NULL) {
         return false;

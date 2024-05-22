@@ -17,7 +17,6 @@ void mergeArray(vector<int>& arr, int s, int e) {
 
     // copy values
     
-    
     int mainIndex = s;
     for (int i = 0; i < len1; i++) {
         first[i] = arr[mainIndex++];
