@@ -3,6 +3,9 @@
 
 using namespace std;
 
+// One of the approaches
+// TC - O(n) 
+
 /*
 Approach : 
     - Push all the elements into stack.
@@ -59,29 +62,29 @@ int celebrityProblem(vector<vector<int>> &M, int n) {
 
     int candidate = s.top();
     // check for the rows of the element left into stack if all the rows are 0 or not except i == j
-    bool checkRow = false, zeroCount = 0;
+    int zeroCount = 0;
     for(int i = 0; i < n; i++) {
         if(M[candidate][i] == 0 && candidate != i) zeroCount++; 
     }
 
     // if zeroCount is n-1 that means row at every column (excluding diagonal index) is 0
-    if(zeroCount == n-1) {
-        checkRow = true;
+    if(zeroCount != n-1) {
+        return -1;
     }
 
     // check for the columns of the element left into stack if all the columns are 1 or not except i == j
-    bool checkCol = false, oneCount = 0;
+    int oneCount = 0;
     for(int i = 0; i < n; i++) {
         if(M[i][candidate] == 1 && candidate != i) oneCount++;
     }
 
     // if oneCount is n-1 that means column at every row (excluding diagonal index) is 1
-    if(oneCount == n-1) {
-        checkCol = true;
+    if(oneCount != n-1) {
+        return -1;
     }
 
     // if row and columns are checked based on them return the response.
-    return (checkRow && checkCol) ? true : false;
+    return candidate;
 }
 
 int main() {
