@@ -3,7 +3,9 @@
 
 using namespace std;
 
-vector<int> nextSmallerElement(vector<int> &arr, int n) {
+// Time Complexity : O(n x m), Space Complexity : O(m)
+
+vector<int> nextSmallerElement(int* arr, int n) {
     stack<int> s;
     s.push(-1);
 
@@ -24,7 +26,7 @@ vector<int> nextSmallerElement(vector<int> &arr, int n) {
     return ans;
 }
 
-vector<int> prevSmallerElement(vector<int> &arr, int n) {
+vector<int> prevSmallerElement(int* arr, int n) {
     stack<int> s;
     s.push(-1);
 
@@ -43,8 +45,8 @@ vector<int> prevSmallerElement(vector<int> &arr, int n) {
     return ans;
 }
 
- int largestRectangleInAHistogram(vector<int> &heights) {
-    int n = heights.size();
+ int largestRectangleInAHistogram(int* heights, int n) {
+    // int n = heights.size();
     vector<int> next(n);
 
     // find the next smallest 
@@ -79,16 +81,64 @@ vector<int> prevSmallerElement(vector<int> &arr, int n) {
     return area;
 }
 
-int maxRectangle(int* M, int n, int m) {
-    vector<int> arr(m, 0);
+// M is array of n x m
+int maxRectangle(int M[5][10], int n, int m) {
 
-    for(int i = 0; i < n; i++) {
+    // // self 
+    // // 1. compute area for the first row
+    // int area = 0;
+
+    // // 2. intialize an array with 0 of size n
+    // int* heights = new int[m];
+    // for(int i = 0; i < m; i++) {
+    //     heights[i] = 0;
+    // }
+
+    // // 3. first row
+    // int i = 0, j = 0;
+    // while(j < m) {
+    //     heights[j] = M[i][j];
+    //     j++;
+    // }
+
+    // // 4. area of the first row
+    // area = largestRectangleInAHistogram(heights, m)
+
+    // // 5. starting from index 1
+    // i++;
+    // while(i < n) {
+    //     j = 0;
+    //     while(j < m) {
+    //         // heights[j] += M[i][j];
+    //         heights[j] = M[i][j] == 0 ? 0 : M[i][j];
+    //         j++;
+    //     }
+    //     area = max(area, largestRectangleInAHistogram(heights, m));
+    //     i++;
+    // }
+
+    // method : in video
+    int area = largestRectangleInAHistogram(M[0], m);
+    for(int i = 1; i < n; i++) {
         for(int j = 0; j < m; j++) {
-            
+            if(M[i][j] != 0) {
+                M[i][j] += M[i-1][j];
+            } else {
+                M[i][j] = 0;
+            }
+
+            area = max(area, largestRectangleInAHistogram(M[i], m));
         }
     }
+    return area;
 }
 
+/*
+    0 1 1 0
+    1 1 1 1
+    1 1 1 1
+    1 1 0 0
+*/
 
 int main() {
     return 0;
