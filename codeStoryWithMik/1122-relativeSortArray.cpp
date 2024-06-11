@@ -5,12 +5,12 @@
 using namespace std;
 
 
-// Time - nlogn : n is traversing of vector and ordered map insertion nlogn
+// Time - nlogn : n is traversing of vector and ordered map insertion, deletion, search nlogn
 // Space complexity : O(n)
 vector<int> relativeSortArray(vector<int> arr1, vector<int> arr2) {
         map<int, int> omap;
         vector<int> res;
-        // ascending order elements stored
+        // ascending order elements stored - insertion logn
         for(int i  = 0; i < arr1.size(); i++) {
             omap[arr1[i]] = omap[arr1[i]] ? ++omap[arr1[i]] : 1;
         }
