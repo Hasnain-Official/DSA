@@ -17,6 +17,8 @@ bool checkEqual(vector<int> c1, vector<int> c2) {
 bool permutationString(string s, string part) {
     vector<int> c1(26, 0), c2(26,0);
     int i = 0;
+
+    // part string count increment in vector c1
     while(i < part.length()) {
         int index = part[i] - 'a';
         c1[index]++;
@@ -25,15 +27,19 @@ bool permutationString(string s, string part) {
     
     i = 0;
     int windowSize = part.length();
+
+    // intialize the first window
     while(i < windowSize && i < s.length()) {
         int index = s[i] - 'a';
         c2[index]++;
         i++;
     }
+    // check if first window contains the part element or not
     if(checkEqual(c1, c2)) {
         return true;
     }
 
+    // slide window for the rest of the elements in the string
     while(i < s.length()) {
         c2[(s[i-windowSize]-'a')]--;
         c2[s[i]-'a']++;

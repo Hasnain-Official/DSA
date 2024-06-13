@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "iostream": "cpp"
     },
     "C_Cpp.default.compilerPath": "d:\\DSA\\codeHelp_by_Babbar\\geeksForGeeks\\maximumOccurringCharacters.cpp"
 }
