@@ -1,5 +1,11 @@
 // NQueueInAnArray
 
+/*
+    Enqueue Operation: O(1)
+    Dequeue Operation: O(1)
+    Space Complexity: O(n), where n is the size of the array used to store the values.
+ */
+
 #include <iostream>
 #include <stdexcept>
 #include <vector>

@@ -1,6 +1,10 @@
 #include <iostream>
 #include <stdexcept>
 
+// TC - PUSH - O(1)
+// TC - POP - O(1)
+// Space Complexity - O(n)
+
 class NStacks {
 private:
     int *arr;      // Array to store stack elements
