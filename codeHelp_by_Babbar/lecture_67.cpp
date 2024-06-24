@@ -14,7 +14,7 @@ class Node {
         this->left = NULL;
         this->right = NULL;
     }
-}
+};
 
 Node* buildTree(Node* root) {
     cout<<"Enter the data :"<<endl;
@@ -43,7 +43,7 @@ void inOrderTraversal(Node* root) {
     }
 
     inOrderTraversal(root->left);
-    cout<<"Data - > "<<data<<endl;
+    cout<<"Data - > "<<root->data<<endl;
     inOrderTraversal(root->right);
 
 }
@@ -90,7 +90,7 @@ void levelOrderTraversal(Node* root) {
         }
 
         if(temp->right != NULL) {
-            q.push(tmep->right);
+            q.push(temp->right);
         }
     }
 }
